@@ -10,7 +10,7 @@
 [http]
 	sslVerify = false
 [alias]
-	change = "!f() { INITAL='[';BRANCH=$(git rev-parse --abbrev-ref HEAD);FINAL='] ';JIRA_TITLE=$(curl -G -s -k -u dbrito:Megasxlr963 https://jira.intranet.uol.com.br/jira/rest/api/latest/issue/$BRANCH.json | awk -Fsummary'\":\"' {'print $2'} | awk -F'\",' {'print $1'});SPACER=' : ';USER_MESSAGE=$1;MESSAGE=$INITAL$BRANCH$FINAL$JIRA_TITLE$SPACER$USER_MESSAGE; git commit -m \"$MESSAGE\"; }; f"
+	change = "!f() { INITAL='[';BRANCH=$(git rev-parse --abbrev-ref HEAD);FINAL='] ';JIRA_TITLE=$(curl -G -s -k -u dbrito:SENHA https://jira.intranet.uol.com.br/jira/rest/api/latest/issue/$BRANCH.json | awk -Fsummary'\":\"' {'print $2'} | awk -F'\",' {'print $1'});SPACER=' : ';USER_MESSAGE=$1;MESSAGE=$INITAL$BRANCH$FINAL$JIRA_TITLE$SPACER$USER_MESSAGE; git commit -m \"$MESSAGE\"; }; f"
 	lg = log --graph  --pretty=format:'%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset' --abbrev-commit --date=relative
 	ps = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git push origin $BRANCH; }; f"
 	pl = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git fetch --all; git fetch -p; git pull origin $BRANCH; }; f"
